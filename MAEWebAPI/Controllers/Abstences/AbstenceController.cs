@@ -51,7 +51,7 @@ namespace MAEWebAPI.Controllers.Abstences
             if (request != null)
                 return Ok(request);
 
-            return StatusCode(200, "It was not possible to count the absences");
+            return StatusCode(204);
         }
 
     }
