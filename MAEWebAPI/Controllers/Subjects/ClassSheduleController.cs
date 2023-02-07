@@ -27,6 +27,16 @@ namespace MAEWebAPI.Controllers.Subjects
             return StatusCode(400, result.message);
         }
 
+        [HttpPost("multi")]
+        public IActionResult InsertMultiClassShedules([FromBody] List<ClassSheduleRequest> request)
+        {
+            var result = classSheduleService.InsetMultiClassShedules(request);
+            if (result.success)
+                return Ok(result);
+
+            return StatusCode(400, result.message);
+        }
+
         [HttpGet]
         public IEnumerable<ReadClassSheduleDTO> GetClassShedule()
         {

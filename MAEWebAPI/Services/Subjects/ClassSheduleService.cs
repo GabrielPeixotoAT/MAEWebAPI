@@ -5,7 +5,6 @@ using MAEWebAPI.Data.Models.Subjects;
 using MAEWebAPI.Data.Requests.Subjects;
 using MAEWebAPI.Data.Result;
 using MAEWebAPI.Services.Subjects.Interface;
-using Microsoft.AspNetCore.Mvc;
 
 namespace MAEWebAPI.Services.Subjects
 {
@@ -32,6 +31,19 @@ namespace MAEWebAPI.Services.Subjects
 
             subjectContext.ClassSchedules.Add(classSchedule);
             subjectContext.SaveChanges();
+
+            return new ResultSuccess("Success");
+        }
+
+        public Result InsetMultiClassShedules(List<ClassSheduleRequest> requests)
+        {
+            foreach (ClassSheduleRequest request in requests)
+            {
+                var result = InsertClassShedule(request);
+
+                if (result.hasError)
+                    return new ResultError(result.message);
+            }
 
             return new ResultSuccess("Success");
         }

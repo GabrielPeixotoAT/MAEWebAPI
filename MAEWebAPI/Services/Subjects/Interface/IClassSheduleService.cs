@@ -7,6 +7,7 @@ namespace MAEWebAPI.Services.Subjects.Interface
     public interface IClassSheduleService
     {
         Result InsertClassShedule(ClassSheduleRequest request);
+        Result InsetMultiClassShedules(List<ClassSheduleRequest> requests);
         IEnumerable<ReadClassSheduleDTO> GetClassShedules();
         Result<ReadClassSheduleDTO> GetClassSheduleByID(int id);
         Result<ReadClassSheduleDTO> GetClassSheduleByDateTime(DateTime start, DateTime end);
