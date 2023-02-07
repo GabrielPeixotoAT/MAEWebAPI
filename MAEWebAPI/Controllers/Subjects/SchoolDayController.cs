@@ -28,6 +28,17 @@ namespace MAEWebAPI.Controllers.Subjects
             return StatusCode(400, result.message);
         }
 
+        [HttpPost("multi")]
+        public IActionResult InsertMultiSchoolDay([FromBody] List<SchoolDayRequest> requests)
+        {
+            Result result = schoolDayService.InsertMultiSchoolDays(requests);
+
+            if (result.success)
+                return Ok(result.message);
+
+            return StatusCode(400, result.message);
+        }
+
         [HttpGet]
         public IActionResult GetSchoolDays()
         {
