@@ -3,6 +3,7 @@ using System;
 using MAEWebAPI.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MAEWebAPI.Migrations
 {
     [DbContext(typeof(SubjectContext))]
-    partial class SubjectContextModelSnapshot : ModelSnapshot
+    [Migration("20230207034940_CriaRelacionamentosEntreAsEntidades")]
+    partial class CriaRelacionamentosEntreAsEntidades
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,20 +67,26 @@ namespace MAEWebAPI.Migrations
                     b.Property<DateTime>("EndTime")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<int>("SchoolDayID")
+                        .HasColumnType("int");
+
                     b.Property<int>("SchoolDayIDFK")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<int>("SubjectID")
+                        .HasColumnType("int");
+
                     b.Property<int?>("SubjectIDFK")
                         .HasColumnType("int");
 
                     b.HasKey("ClassScheduleID");
 
-                    b.HasIndex("SchoolDayIDFK");
+                    b.HasIndex("SchoolDayID");
 
-                    b.HasIndex("SubjectIDFK");
+                    b.HasIndex("SubjectID");
 
                     b.ToTable("ClassSchedules");
                 });
@@ -119,13 +127,15 @@ namespace MAEWebAPI.Migrations
                 {
                     b.HasOne("MAEWebAPI.Data.Models.Subjects.SchoolDay", "SchoolDay")
                         .WithMany("ClassSchedule")
-                        .HasForeignKey("SchoolDayIDFK")
+                        .HasForeignKey("SchoolDayID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MAEWebAPI.Data.Models.Subjects.Subject", "Subject")
                         .WithMany("ClassSchedules")
-                        .HasForeignKey("SubjectIDFK");
+                        .HasForeignKey("SubjectID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("SchoolDay");
 

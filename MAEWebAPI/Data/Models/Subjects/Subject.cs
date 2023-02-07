@@ -11,5 +11,7 @@ namespace MAEWebAPI.Data.Models.Subjects
         public string Name { get; set; }
         [Required]
         public int TotalClasses { get; set; }
+
+        public virtual List<ClassSchedule> ClassSchedules { get; set; }
     }
 }

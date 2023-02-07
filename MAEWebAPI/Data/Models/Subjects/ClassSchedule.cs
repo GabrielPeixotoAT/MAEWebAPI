@@ -13,6 +13,9 @@ namespace MAEWebAPI.Data.Models.Subjects
         public DateTime EndTime { get; set; }
         public int? SubjectIDFK { get; set; }
         [Required]
-        public int SchoolDayIDFK { get; set; }
+        public int SchoolDayIDFK { get; set; }  
+
+        public virtual SchoolDay SchoolDay { get; set; }
+        public virtual Subject Subject { get; set; }
     }
 }
