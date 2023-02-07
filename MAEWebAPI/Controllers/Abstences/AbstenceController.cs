@@ -51,7 +51,7 @@ namespace MAEWebAPI.Controllers.Abstences
             if (request != null)
                 return Ok(request);
 
-            return StatusCode(204);
+            return StatusCode(404, "The Subject was not found");
         }
     }
 }
