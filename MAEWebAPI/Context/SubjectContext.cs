@@ -24,7 +24,6 @@ namespace MAEWebAPI.Context
                 relationship.CreateRelationship(builder);
                 relationship.DefaultValues(builder);
             }
-
         }
 
         public DbSet<Subject> Subjects { get; set; }

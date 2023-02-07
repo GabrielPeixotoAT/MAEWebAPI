@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MAEWebAPI.Data.Models.Abstences;
+using System.ComponentModel.DataAnnotations;
 
 namespace MAEWebAPI.Data.Models.Subjects
 {
@@ -13,5 +14,7 @@ namespace MAEWebAPI.Data.Models.Subjects
         public int TotalClasses { get; set; }
 
         public virtual List<ClassSchedule> ClassSchedules { get; set; }
+        public virtual List<Abstence> Abstences { get; set; }
+        public virtual List<SubjectAbstences> SubjectAbstences { get; set; }
     }
 }

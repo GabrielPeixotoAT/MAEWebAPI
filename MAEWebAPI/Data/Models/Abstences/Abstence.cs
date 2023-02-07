@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MAEWebAPI.Data.Models.Subjects;
+using System.ComponentModel.DataAnnotations;
 
 namespace MAEWebAPI.Data.Models.Abstences
 {
@@ -12,5 +13,8 @@ namespace MAEWebAPI.Data.Models.Abstences
         public int ClassSheduleIDFK { get; set; }
         [Required]
         public int SubjectIDFK { get; set; }
+
+        public virtual Subject Subject { get; set; }
+        public virtual ClassSchedule ClassSchedule { get; set; }
     }
 }
