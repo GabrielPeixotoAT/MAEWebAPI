@@ -17,6 +17,7 @@ namespace MAEWebAPI.DIP
             services.AddScoped<IClassSheduleService, ClassSheduleService>();
 
             services.AddScoped<IAbstenceService, AbstenceService>();
+            services.AddScoped<ISubjectAbstencesService, SubjectAbstencesService>();
         }
     }
 }

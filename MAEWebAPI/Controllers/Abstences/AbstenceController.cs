@@ -1,4 +1,5 @@
 ﻿using MAEWebAPI.Data.DTOs.Abstence;
+using MAEWebAPI.Data.DTOs.SubjectAbstences;
 using MAEWebAPI.Data.Requests.Abstences;
 using MAEWebAPI.Data.Result;
 using MAEWebAPI.Services.Abstences.Interface;
@@ -11,10 +12,12 @@ namespace MAEWebAPI.Controllers.Abstences
     public class AbstenceController : ControllerBase
     {
         IAbstenceService abstenceService;
+        ISubjectAbstencesService subjectAbstencesService;
 
-        public AbstenceController(IAbstenceService abstenceService)
+        public AbstenceController(IAbstenceService abstenceService, ISubjectAbstencesService subjectAbstencesService)
         {
             this.abstenceService = abstenceService;
+            this.subjectAbstencesService = subjectAbstencesService;
         }
 
         [HttpPost]
@@ -32,6 +35,12 @@ namespace MAEWebAPI.Controllers.Abstences
         public IEnumerable<ReadAbstenceDTO> GetAbstences()
         {
             return abstenceService.GetAbstences();
+        }
+
+        [HttpGet("subjects")]
+        public IEnumerable<ReadSubjectAbstencesDTO> GetSubjectAbstences()
+        {
+            return subjectAbstencesService.GetSubjectAbstences();
         }
     }
 }

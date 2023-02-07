@@ -13,10 +13,13 @@ namespace MAEWebAPI.Services.Abstences
         SubjectContext subjectContext;
         IMapper mapper;
 
-        public AbstenceService(SubjectContext subjectContext, IMapper mapper)
+        ISubjectAbstencesService subjectAbstencesService;
+
+        public AbstenceService(SubjectContext subjectContext, IMapper mapper, ISubjectAbstencesService subjectAbstencesService)
         {
             this.subjectContext = subjectContext;
             this.mapper = mapper;
+            this.subjectAbstencesService = subjectAbstencesService;
         }
 
         public Result<CreateAbstenceDTO> InsertAbstence(AbstenceRequest request)
@@ -29,6 +32,11 @@ namespace MAEWebAPI.Services.Abstences
 
             subjectContext.Abstences.Add(abstence);
             subjectContext.SaveChanges();
+
+            Result<SubjectAbstences> result = subjectAbstencesService.CreateSubjectAbstences(mapper.Map<ReadAbstenceDTO>(abstence));
+
+            if (result.hasError)
+                return new ResultError<CreateAbstenceDTO>(result.message);
 
             return new ResultSuccess<CreateAbstenceDTO>(create);
         }
