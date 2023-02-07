@@ -25,7 +25,7 @@ namespace MAEWebAPI.Services.Subjects
         {
             Subject subject = mapper.Map<Subject>(subjectRequest);
 
-            if(GetReadSubjectByName(subject.Name) != null)
+            if(GetSubjectByName(subject.Name) != null)
                 return new ResultError<ReadSubjectDTO>("This subject is already registered");
 
             subjectContext.Subjects.Add(subject);
@@ -51,7 +51,7 @@ namespace MAEWebAPI.Services.Subjects
             return mapper.Map<List<ReadSubjectDTO>>(subjectContext.Subjects.ToList());
         }
 
-        public ReadSubjectDTO? GetReadSubjectByName(string name)
+        public ReadSubjectDTO? GetSubjectByName(string name)
         {
             Subject? subject = subjectContext.Subjects.FirstOrDefault(sub => sub.Name == name);
 

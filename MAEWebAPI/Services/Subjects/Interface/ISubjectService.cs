@@ -10,5 +10,6 @@ namespace MAEWebAPI.Services.Subjects.Interface
         Result InsertMultiSubjects(List<SubjectRequest> subjectRequests);
         IEnumerable<ReadSubjectDTO> GetSubjects();
         ReadSubjectDTO GetSubjectByID(int id);
+        ReadSubjectDTO? GetSubjectByName(string name);
     }
 }

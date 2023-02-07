@@ -42,5 +42,17 @@ namespace MAEWebAPI.Controllers.Abstences
         {
             return subjectAbstencesService.GetSubjectAbstences();
         }
+
+        [HttpGet("percent")]
+        public IActionResult GetAbstencesBySubject(string subjectName)
+        {
+            SubjectAbstenceRequest? request = subjectAbstencesService.GetSubjectAbstencesBySubjectName(subjectName);
+
+            if (request != null)
+                return Ok(request);
+
+            return StatusCode(200, "It was not possible to count the absences");
+        }
+
     }
 }
