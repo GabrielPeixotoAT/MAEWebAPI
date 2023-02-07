@@ -31,6 +31,17 @@ namespace MAEWebAPI.Controllers.Abstences
             return StatusCode(400, result.message);
         }
 
+        [HttpPost("day")]
+        public IActionResult InsertAbstenceDay([FromBody] AbstenceRequest request)
+        {
+            Result<CreateAbstenceDTO> result = abstenceService.InsertAbstenceDay(request);
+
+            if (result.success)
+                return Ok(result);
+
+            return StatusCode(400, result.message);
+        }
+
         [HttpGet]
         public IEnumerable<ReadAbstenceDTO> GetAbstences()
         {

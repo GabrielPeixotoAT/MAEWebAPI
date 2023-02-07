@@ -8,7 +8,7 @@ namespace MAEWebAPI.Data.Models.Subjects
         [Required]
         public int SchoolDayID { get; set; }
         [Required]
-        public DateTime Description { get; set; }
+        public string Description { get; set; }
 
         public virtual List<ClassSchedule> ClassSchedule { get; set; }
     }

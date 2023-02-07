@@ -5,6 +5,6 @@ namespace MAEWebAPI.Data.DTOs.SchoolDay
     public class CreateSchoolDayDTO
     {
         [Required]
-        public DateTime Description { get; set; }
+        public string Description { get; set; }
     }
 }

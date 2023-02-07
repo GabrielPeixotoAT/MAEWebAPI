@@ -29,7 +29,7 @@ namespace MAEWebAPI.Controllers.Subjects
             return StatusCode(400, result.message);
         }
 
-        /*[HttpPost]
+        [HttpPost("multi")]
         public IActionResult InsertMultiSubjects([FromBody] List<SubjectRequest> subjectRequests)
         {
             Result result = subjectService.InsertMultiSubjects(subjectRequests);
@@ -38,7 +38,7 @@ namespace MAEWebAPI.Controllers.Subjects
                 return Ok(result.message);
 
             return StatusCode(400, result.message);
-        }*/
+        }
 
         [HttpGet]
         public IEnumerable<ReadSubjectDTO> GetSubjects([FromQuery] int skip = 0, [FromQuery] int take = 10)

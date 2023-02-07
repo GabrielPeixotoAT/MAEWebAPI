@@ -3,6 +3,7 @@ using System;
 using MAEWebAPI.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MAEWebAPI.Migrations
 {
     [DbContext(typeof(SubjectContext))]
-    partial class SubjectContextModelSnapshot : ModelSnapshot
+    [Migration("20230207083647_ClasseSchoolDayGuardaraUmDiaDaSemana")]
+    partial class ClasseSchoolDayGuardaraUmDiaDaSemana
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

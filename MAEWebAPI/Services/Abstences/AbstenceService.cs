@@ -41,6 +41,11 @@ namespace MAEWebAPI.Services.Abstences
             return new ResultSuccess<CreateAbstenceDTO>(create);
         }
 
+        public Result<CreateAbstenceDTO> InsertAbstenceDay(AbstenceRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<ReadAbstenceDTO> GetAbstences()
         {
             return mapper.Map<List<ReadAbstenceDTO>>(subjectContext.Abstences.ToList());

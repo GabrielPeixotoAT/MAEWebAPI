@@ -25,7 +25,7 @@ namespace MAEWebAPI.Services.Subjects
         {
             CreateSchoolDayDTO schoolDay = mapper.Map<CreateSchoolDayDTO>(request);
 
-            ReadSchoolDayDTO? readSchoolDay = GetSchoolDayByDate(schoolDay.Description);
+            ReadSchoolDayDTO? readSchoolDay = GetSchoolDayByDay(schoolDay.Description);
 
             if (readSchoolDay != null )
                 return new ResultError<CreateSchoolDayDTO>("This Day is already registered");
@@ -59,7 +59,7 @@ namespace MAEWebAPI.Services.Subjects
             return mapper.Map<ReadSchoolDayDTO>(context.SchoolDays.FirstOrDefault(sd => sd.SchoolDayID == id));
         }
 
-        public ReadSchoolDayDTO GetSchoolDayByDate(DateTime date)
+        public ReadSchoolDayDTO GetSchoolDayByDay(string date)
         {
             return mapper.Map<ReadSchoolDayDTO>(context.SchoolDays.FirstOrDefault(sd => sd.Description == date));
         }

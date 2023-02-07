@@ -9,7 +9,7 @@ namespace MAEWebAPI.Services.Subjects.Interface
         Result<CreateSchoolDayDTO> InsertSchoolDay(SchoolDayRequest request);
         Result InsertMultiSchoolDays(List<SchoolDayRequest> request);
         IEnumerable<ReadSchoolDayDTO> GetSchoolDays();
-        ReadSchoolDayDTO GetSchoolDayByDate(DateTime date);
+        ReadSchoolDayDTO GetSchoolDayByDay(string date);
         ReadSchoolDayDTO GetSchoolDayByID(int id);
     }
 }

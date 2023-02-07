@@ -5,6 +5,6 @@ namespace MAEWebAPI.Data.Requests.Subjects
     public class SchoolDayRequest
     {
         [Required]
-        public DateTime Description { get; set; }
+        public string Description { get; set; }
     }
 }
