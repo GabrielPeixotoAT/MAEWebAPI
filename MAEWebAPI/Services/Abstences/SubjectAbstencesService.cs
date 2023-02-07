@@ -79,6 +79,14 @@ namespace MAEWebAPI.Services.Abstences
                         TotalClasses = readSubject.TotalClasses,
                         PresencePercent = 100 - (readSubjectAbstences.AbstencesCount * 100 / readSubject.TotalClasses)
                     };
+                return new SubjectAbstenceRequest
+                    {
+                    SubjectName = readSubject.Name,
+                        AbstencesCount = 0,
+                        TotalClasses = readSubject.TotalClasses,
+                        PresencePercent = 100
+                    };
+
             }
 
             return null;

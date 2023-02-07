@@ -53,6 +53,5 @@ namespace MAEWebAPI.Controllers.Abstences
 
             return StatusCode(204);
         }
-
     }
 }
