@@ -11,5 +11,7 @@ namespace MAEWebAPI.Data.DTOs.Abstence
         public int ClassSheduleIDFK { get; set; }
         [Required]
         public int SubjectIDFK { get; set; }
+        [Required]
+        public int ClassCount { get; set; }
     }
 }

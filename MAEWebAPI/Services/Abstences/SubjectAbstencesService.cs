@@ -31,7 +31,7 @@ namespace MAEWebAPI.Services.Abstences
 
             if (abstences != null)
             {
-                abstences.AbstencesCount++;
+                abstences.AbstencesCount += abstence.ClassCount;
                 subjectContext.SaveChanges();
 
                 return new ResultSuccess<SubjectAbstences>(abstences);
@@ -40,7 +40,7 @@ namespace MAEWebAPI.Services.Abstences
             SubjectAbstences subjectAbstences = new SubjectAbstences
             {
                 SubjectIDFK = abstence.SubjectIDFK,
-                AbstencesCount = 1
+                AbstencesCount = abstence.ClassCount
             };
 
             subjectContext.SubjectsAbstences.Add(subjectAbstences);
@@ -77,19 +77,24 @@ namespace MAEWebAPI.Services.Abstences
                         SubjectName = readSubject.Name,
                         AbstencesCount = readSubjectAbstences.AbstencesCount,
                         TotalClasses = readSubject.TotalClasses,
-                        PresencePercent = 100 - (readSubjectAbstences.AbstencesCount * 100 / readSubject.TotalClasses)
+                        PresencePercent = CalculateAbstencePercent(readSubjectAbstences.AbstencesCount, readSubject.TotalClasses)
                     };
                 return new SubjectAbstenceRequest
                     {
                     SubjectName = readSubject.Name,
                         AbstencesCount = 0,
                         TotalClasses = readSubject.TotalClasses,
-                        PresencePercent = 100
+                        PresencePercent = 100m
                     };
 
             }
 
             return null;
+        }
+
+        Decimal CalculateAbstencePercent(int presencePercent, int totalClasses)
+        {
+            return Math.Round(100m - (Convert.ToDecimal(presencePercent) * 100m / Convert.ToDecimal(totalClasses)), 2);
         }
     }
 }
