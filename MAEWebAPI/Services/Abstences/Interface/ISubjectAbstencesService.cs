@@ -12,5 +12,6 @@ namespace MAEWebAPI.Services.Abstences.Interface
         IEnumerable<ReadSubjectAbstencesDTO> GetSubjectAbstences();
         SubjectAbstences? GetSubjectAbstencesBySubjectID(int subjectID);
         SubjectAbstenceRequest? GetSubjectAbstencesBySubjectName(string subjectName);
+        List<SubjectAbstenceRequest> GetSubjectAbstencePercent();
     }
 }

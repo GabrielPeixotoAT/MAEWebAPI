@@ -4,6 +4,7 @@ using MAEWebAPI.Data.DTOs.Abstence;
 using MAEWebAPI.Data.DTOs.SubjectAbstences;
 using MAEWebAPI.Data.DTOs.Subjects;
 using MAEWebAPI.Data.Models.Abstences;
+using MAEWebAPI.Data.Models.Subjects;
 using MAEWebAPI.Data.Requests.Abstences;
 using MAEWebAPI.Data.Result;
 using MAEWebAPI.Services.Abstences.Interface;
@@ -90,6 +91,20 @@ namespace MAEWebAPI.Services.Abstences
             }
 
             return null;
+        }
+
+        public List<SubjectAbstenceRequest> GetSubjectAbstencePercent()
+        {
+            List<SubjectAbstenceRequest> subjectAbstences = new List<SubjectAbstenceRequest>();
+            List<Subject> subjects = subjectContext.Subjects.ToList();
+
+            foreach (Subject subject in subjects)
+            {
+
+                subjectAbstences.Add(GetSubjectAbstencesBySubjectName(subject.Name));
+            }
+
+            return subjectAbstences;
         }
 
         Decimal CalculateAbstencePercent(int presencePercent, int totalClasses)

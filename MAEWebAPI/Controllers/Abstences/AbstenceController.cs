@@ -64,5 +64,16 @@ namespace MAEWebAPI.Controllers.Abstences
 
             return StatusCode(404, "The Subject was not found");
         }
+
+        [HttpGet("percents")]   
+        public IActionResult GetAbstencesPercent()
+        {
+            List<SubjectAbstenceRequest> request = subjectAbstencesService.GetSubjectAbstencePercent();
+
+            if (request != null)
+                return Ok(request);
+
+            return StatusCode(404, "The Subject was not found");
+        }
     }
 }
