@@ -7,6 +7,9 @@ namespace MAEWebAPI.Data.Requests.Subjects
         [Required(ErrorMessage = "The Subject Name is Required")]
         [StringLength(100)]
         public string Name { get; set; }
+        [Required]
+        [StringLength(6)]
+        public string Code { get; set; }
         [Required(ErrorMessage = "The Subject Total Classes is Required")]
         public int TotalClasses { get; set; }
     }

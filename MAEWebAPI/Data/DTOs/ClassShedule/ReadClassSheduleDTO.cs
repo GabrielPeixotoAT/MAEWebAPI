@@ -8,7 +8,7 @@ namespace MAEWebAPI.Data.DTOs.ClassShedule
         public int ClassScheduleID { get; set; }
         [Required]
         public string Shedules { get; set; }
-        public int? SubjectIDFK { get; set; }
+        public int SubjectIDFK { get; set; }
         [Required]
         public int SchoolDayIDFK { get; set; }
     }

@@ -3,6 +3,7 @@ using MAEWebAPI.Services.Subjects.Interface;
 using Microsoft.AspNetCore.Mvc;
 using MAEWebAPI.Data.DTOs.ClassShedule;
 using MAEWebAPI.Data.Result;
+using System.Collections;
 
 namespace MAEWebAPI.Controllers.Subjects
 {
@@ -11,10 +12,12 @@ namespace MAEWebAPI.Controllers.Subjects
     public class ClassSheduleController : ControllerBase
     {
         IClassSheduleService classSheduleService;
+        ISubjectService subjectService;
 
-        public ClassSheduleController(IClassSheduleService classSheduleService)
+        public ClassSheduleController(IClassSheduleService classSheduleService, ISubjectService subjectService)
         {
             this.classSheduleService = classSheduleService;
+            this.subjectService = subjectService;
         }
 
         [HttpPost]
@@ -38,11 +41,23 @@ namespace MAEWebAPI.Controllers.Subjects
         }
 
         [HttpGet]
-        public IEnumerable<ReadClassSheduleDTO> GetClassShedule()
+        public IEnumerable GetClassShedule()
         {
             IEnumerable<ReadClassSheduleDTO> result = classSheduleService.GetClassShedules();
 
-            return result;
+            List<ClassSheduleResponse> response = new List<ClassSheduleResponse>();
+
+            foreach (ReadClassSheduleDTO classShedule in result)
+            {
+                response.Add(new ClassSheduleResponse
+                {
+                    Shedules = classShedule.Shedules,
+                    SchoolDayIDFK = classShedule.SchoolDayIDFK,
+                    SubjectCode = subjectService.GetSubjectByID(classShedule.SubjectIDFK).Code
+                });
+            }
+
+            return response;
         }
 
         [HttpGet("{id}")]
