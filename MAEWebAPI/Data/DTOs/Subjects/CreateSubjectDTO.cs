@@ -8,6 +8,9 @@ namespace MAEWebAPI.Data.DTOs.Subjects
         [StringLength(100)]
         public string Name { get; set; }
         [Required]
+        [StringLength(6)]
+        public string Code { get; set; }
+        [Required]
         public int TotalClasses { get; set; }
     }
 }
